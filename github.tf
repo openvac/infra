@@ -70,7 +70,7 @@ resource "github_repository_collaborator" "public-repo-collabs" {
 
 resource "github_repository_webhook" "public-repo-webhooks" {
   for_each   = local.repositories
-  repository = github_repository.public-repos[each.key]
+  repository = github_repository.public-repos[each.key].name
   active     = true
   events     = ["push"]
 
