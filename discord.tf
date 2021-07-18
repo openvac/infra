@@ -22,6 +22,7 @@ resource "discord_text_channel" "general" {
 }
 
 resource "discord_voice_channel" "general" {
-  name      = "general"
-  server_id = discord_server.openvac.id
+  name                     = "general"
+  server_id                = discord_server.openvac.id
+  sync_perms_with_category = false
 }
