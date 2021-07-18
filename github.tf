@@ -7,6 +7,7 @@ locals {
     phatograph    = "member"
     kanokorn      = "member"
     narze         = "member"
+    zentetsukenz  = "member"
   }
 
   repositories = {
