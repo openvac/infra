@@ -41,7 +41,7 @@ locals {
 resource "github_membership" "members" {
   for_each = local.members
   username = each.key
-  role = each.value
+  role     = each.value
 }
 
 resource "github_repository" "public-repos" {
@@ -62,4 +62,16 @@ resource "github_repository" "public-repos" {
   allow_squash_merge     = false
   allow_rebase_merge     = true
   delete_branch_on_merge = true
+}
+
+resource "github_branch" "main-branches" {
+  for_each   = local.repositories
+  repository = each.key
+  branch     = "main"
+}
+
+resource "github_branch_default" "default-branches" {
+  for_each   = local.repositories
+  repository = each.key
+  branch     = "main"
 }
