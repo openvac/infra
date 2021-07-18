@@ -6,6 +6,7 @@ locals {
     zeing         = "member"
     phatograph    = "member"
     kanokorn      = "member"
+    narze         = "member"
   }
 
   repositories = {
