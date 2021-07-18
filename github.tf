@@ -13,12 +13,6 @@ locals {
   }
 }
 
-resource "github_membership" "admins" {
-  for_each = local.admins
-  username = each.key
-  role     = "admin"
-}
-
 resource "github_membership" "members" {
   for_each = local.members
   username = each.key
