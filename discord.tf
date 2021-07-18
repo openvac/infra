@@ -14,3 +14,14 @@ resource "discord_invite" "public-invite" {
   channel_id = discord_text_channel.welcome.id
   max_age    = 0
 }
+
+resource "discord_text_channel" "general" {
+  name                     = "general"
+  server_id                = discord_server.openvac.id
+  sync_perms_with_category = false
+}
+
+resource "discord_voice_channel" "general" {
+  name      = "general"
+  server_id = discord_server.openvac.id
+}
