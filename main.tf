@@ -75,3 +75,16 @@ resource "github_branch_default" "default-branches" {
   repository = each.key
   branch     = "main"
 }
+
+resource "github_repository_collaborator" "public-repo-collabs" {
+  for_each = toset(flatten([
+    for member, _ in local.members : [
+      for repo, _ in local.repositories :
+      "${member}:${repo}"
+    ]
+  ]))
+
+  username   = split(":", each.key)[0]
+  repository = split(":", each.key)[1]
+  permission = "push"
+}
