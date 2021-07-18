@@ -5,6 +5,7 @@ locals {
     pistachiology = "member"
     zeing         = "member"
     phatograph    = "member"
+    kanokorn      = "member"
   }
 
   repositories = {
