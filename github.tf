@@ -61,5 +61,5 @@ resource "github_repository_collaborator" "public-repo-collabs" {
 
   username   = split(":", each.key)[0]
   repository = split(":", each.key)[1]
-  permission = local.members[each.key] == "admin" ? "admin" : "push"
+  permission = local.members[split(":", each.key)[0]] == "admin" ? "admin" : "push"
 }
