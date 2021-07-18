@@ -7,6 +7,7 @@ resource "discord_server" "openvac" {
 resource "discord_text_channel" "welcome" {
   name      = "welcome"
   server_id = discord_server.openvac.id
+  category  = null
 }
 
 resource "discord_invite" "public-invite" {
