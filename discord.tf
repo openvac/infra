@@ -16,6 +16,7 @@ resource "discord_invite" "public-invite" {
 }
 
 output "discord_invite_code" {
-  value     = discord_invite.public-invite.code
-  sensitive = false
+  description = "Invite code to the welcome channel"
+  value       = discord_invite.public-invite.code
+  sensitive   = false
 }
