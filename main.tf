@@ -39,7 +39,6 @@ resource "github_repository" "public-repos" {
   visibility     = "public"
   is_template    = false
   auto_init      = false
-  default_branch = "main"
 
   has_issues    = true
   has_projects  = false
