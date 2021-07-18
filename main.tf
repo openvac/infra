@@ -30,6 +30,7 @@ locals {
     iporsut       = "member"
     pistachiology = "member"
     zeing         = "member"
+    phatograph    = "member"
   }
 
   repositories = {
