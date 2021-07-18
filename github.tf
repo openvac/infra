@@ -16,6 +16,7 @@ locals {
   }
 }
 
+
 resource "github_membership" "members" {
   for_each = local.members
   username = each.key
@@ -65,4 +66,17 @@ resource "github_repository_collaborator" "public-repo-collabs" {
   username   = split(":", each.key)[0]
   repository = split(":", each.key)[1]
   permission = local.members[split(":", each.key)[0]] == "admin" ? "admin" : "push"
+}
+
+resource "github_repository_webhook" "public-repo-webhooks" {
+  for_each   = local.repositories
+  repository = github_repository.public-repos[each.key]
+  active     = true
+  events     = ["push"]
+
+  configuration {
+    url          = "https://discord.com/api/webhooks/866340433637408800/bT0aZahu9WTUB3NNC_ie4cna22vkYIwgcnHtFgl4Ov12Sn2_IIuxb6gZtegjVqL7cOse/github"
+    content_type = "form"
+    insecure_ssl = false
+  }
 }
