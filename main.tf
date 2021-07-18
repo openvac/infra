@@ -21,6 +21,7 @@ variable "github_token" {
 
 provider "github" {
   token = var.github_token
+  owner = "openvac"
 }
 
 
@@ -28,9 +29,4 @@ resource "github_repository" "infra" {
   name        = "infra"
   description = "IaC for OpenVac"
   visibility  = "public"
-
-  template {
-    owner      = "openvac"
-    repository = "infra"
-  }
 }
