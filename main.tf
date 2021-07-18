@@ -25,20 +25,33 @@ provider "github" {
 }
 
 locals {
+  members = {
+    chakrit       = "admin"
+    iporsut       = "member"
+    pistachiology = "member"
+    zeing         = "member"
+  }
+
   repositories = {
     "infra"   = "IaC for OpenVac",
     "openvac" = "Main openvac codebase",
   }
 }
 
+resource "github_membership" "members" {
+  for_each = local.members
+  username = each.key
+  role = each.value
+}
+
 resource "github_repository" "public-repos" {
   for_each = local.repositories
 
-  name           = each.key
-  description    = each.value
-  visibility     = "public"
-  is_template    = false
-  auto_init      = false
+  name        = each.key
+  description = each.value
+  visibility  = "public"
+  is_template = false
+  auto_init   = false
 
   has_issues    = true
   has_projects  = false
