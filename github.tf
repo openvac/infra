@@ -76,7 +76,7 @@ resource "github_repository_webhook" "public-repo-webhooks" {
 
   configuration {
     url          = "https://discord.com/api/webhooks/866340433637408800/bT0aZahu9WTUB3NNC_ie4cna22vkYIwgcnHtFgl4Ov12Sn2_IIuxb6gZtegjVqL7cOse/github"
-    content_type = "form"
+    content_type = "json"
     insecure_ssl = false
   }
 }
