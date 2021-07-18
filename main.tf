@@ -9,10 +9,28 @@ terraform {
 
   required_providers {
     github = {
-      source = "integrations/github"
+      source  = "integrations/github"
       version = "4.12.2"
     }
   }
 }
 
-provider "github" {}
+variable "github_token" {
+  type = string
+}
+
+provider "github" {
+  token = var.github_token
+}
+
+
+resource "github_repository" "infra" {
+  name        = "infra"
+  description = "IaC for OpenVac"
+  visibility  = "public"
+
+  template {
+    owner      = "openvac"
+    repository = "infra"
+  }
+}
