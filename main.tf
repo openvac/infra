@@ -39,3 +39,9 @@ provider "github" {
 provider "discord" {
   token = var.discord_token
 }
+
+output "discord_invite_code" {
+  description = "Invite code to the welcome channel"
+  value       = discord_invite.public-invite.id
+  sensitive   = false
+}

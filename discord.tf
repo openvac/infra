@@ -14,9 +14,3 @@ resource "discord_invite" "public-invite" {
   channel_id = discord_text_channel.welcome.id
   max_age    = 0
 }
-
-output "discord_invite_code" {
-  description = "Invite code to the welcome channel"
-  value       = discord_invite.public-invite.code
-  sensitive   = false
-}
