@@ -8,7 +8,6 @@ resource "discord_text_channel" "welcome" {
   name                     = "welcome"
   server_id                = discord_server.openvac.id
   sync_perms_with_category = false
-  allow                    = 384064
 }
 
 resource "discord_invite" "public-invite" {
@@ -20,11 +19,9 @@ resource "discord_text_channel" "general" {
   name                     = "general"
   server_id                = discord_server.openvac.id
   sync_perms_with_category = false
-  allow                    = 384064
 }
 
 resource "discord_voice_channel" "general" {
   name      = "general"
   server_id = discord_server.openvac.id
-  allow     = 37084736
 }
