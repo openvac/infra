@@ -13,6 +13,12 @@ locals {
   }
 }
 
+resource "github_membership" "admins" {
+  for_each = local.admins
+  username = each.key
+  role     = "admin"
+}
+
 resource "github_membership" "members" {
   for_each = local.members
   username = each.key
@@ -61,5 +67,5 @@ resource "github_repository_collaborator" "public-repo-collabs" {
 
   username   = split(":", each.key)[0]
   repository = split(":", each.key)[1]
-  permission = "push"
+  permission = local.members[each.key] == "admin" ? "admin" : "push"
 }
