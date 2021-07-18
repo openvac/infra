@@ -5,9 +5,9 @@ resource "discord_server" "openvac" {
 }
 
 resource "discord_text_channel" "welcome" {
-  name      = "welcome"
-  server_id = discord_server.openvac.id
-  category  = null
+  name                     = "welcome"
+  server_id                = discord_server.openvac.id
+  sync_perms_with_category = false
 }
 
 resource "discord_invite" "public-invite" {
