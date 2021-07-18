@@ -21,8 +21,15 @@ resource "discord_text_channel" "general" {
   sync_perms_with_category = false
 }
 
+resource "discord_text_channel" "github" {
+  name                     = "github"
+  server_id                = discord_server.openvac.id
+  sync_perms_with_category = false
+}
+
 resource "discord_voice_channel" "general" {
   name                     = "general"
   server_id                = discord_server.openvac.id
   sync_perms_with_category = false
 }
+
